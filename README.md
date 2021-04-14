@@ -1,4 +1,4 @@
-# Flexflux
+# FlexFlux
 
 https://flexflux.web.app/
 

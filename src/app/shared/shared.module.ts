@@ -1,14 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { MaterialModule } from './material.module';
+import { PageTitleComponent } from './page-title/page-title.component';
+
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    PageTitleComponent
+  ],
   imports: [
     CommonModule,
+    RouterModule,
     FormsModule,
     ReactiveFormsModule,
     MaterialModule
@@ -17,7 +23,8 @@ import { MaterialModule } from './material.module';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    PageTitleComponent
   ]
 })
 export class SharedModule { }

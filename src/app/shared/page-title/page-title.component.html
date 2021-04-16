@@ -1,0 +1,8 @@
+<h1 class="c-page-title mat-display-1">
+  <ng-container *ngIf="backURL">
+    <a class="c-page-title__link"
+       [routerLink]="backURL">{{ backTitle }}</a>
+    <mat-icon>keyboard_arrow_right</mat-icon>
+  </ng-container>
+  <ng-content></ng-content>
+</h1>

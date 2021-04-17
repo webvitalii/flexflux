@@ -2,4 +2,35 @@
   <app-page-title>Task list</app-page-title>
 
   <a mat-raised-button color="primary" [routerLink]="['/admin-task', 'create']">New task</a>
+
+  <div *ngIf="tasks.length; else loading">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Date</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let task of tasks; let idx = index">
+        <td>{{ idx + 1 }}</td>
+        <td>{{ task.title }}</td>
+        <td>{{ task.date | date:'medium' }}</td>
+        <td>
+          <button mat-raised-button
+                  [routerLink]="['/admin-task', 'edit', task.id]">Edit</button>
+          <button mat-raised-button
+                  [color]="'warn'"
+                  (click)="remove(task.id)">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #loading>
+    Loading...
+  </ng-template>
 </section>

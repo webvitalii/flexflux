@@ -22,7 +22,7 @@ import { MatInputModule } from '@angular/material/input';
 // import { MatProgressBarModule } from '@angular/material/progress-bar';
 // import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 // import { MatRadioModule } from '@angular/material/radio';
-// import { MatSelectModule } from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 // import { MatSidenavModule } from '@angular/material/sidenav';
 // import { MatSliderModule } from '@angular/material/slider';
 // import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -41,12 +41,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatButtonModule,
     MatIconModule,
     MatInputModule,
+    MatSelectModule,
     MatToolbarModule
   ],
   exports: [
     MatButtonModule,
     MatIconModule,
     MatInputModule,
+    MatSelectModule,
     MatToolbarModule
   ]
 })

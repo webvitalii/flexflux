@@ -1,3 +1,6 @@
 export const environment = {
-  production: true
+  production: true,
+  firebaseConfig: {
+    databaseURL: 'https://flexflux-default-rtdb.firebaseio.com/',
+  }
 };

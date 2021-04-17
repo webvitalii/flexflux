@@ -2,4 +2,41 @@
   <app-page-title [backURL]="'/admin-task'"
                   [backTitle]="'Task list'">Create task</app-page-title>
 
+  <form [formGroup]="form" (ngSubmit)="submit()" novalidate class="c-form">
+
+    <div class="c-form__row">
+      <mat-form-field [appearance]="dataService.controlAppearance" class="c-form__control">
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title">
+        <mat-error *ngIf="form.get('title').hasError('required')">
+          Required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="c-form__row">
+      <mat-form-field [appearance]="dataService.controlAppearance" class="c-form__control">
+        <mat-label>Period</mat-label>
+        <mat-select formControlName="priority">
+          <mat-option></mat-option>
+          <mat-option *ngFor="let priorityItem of [].constructor(5); let i = index" [value]="i + 1">
+            {{ i + 1 }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('priority').hasError('required')">
+          Required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="c-form__row">
+      <button mat-raised-button
+              color="primary"
+              [disabled]="form.invalid">
+        Submit
+      </button>
+    </div>
+
+  </form>
+
 </section>

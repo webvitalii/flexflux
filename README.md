@@ -8,9 +8,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Todo:
 * list with table (sort, pager, filter)
-* delete
 * delete confirmation
-* notify wrap for snackBar
 * add week to the task item (create, edit)
 * add today day with list of tasks
 

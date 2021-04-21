@@ -16,19 +16,6 @@ export class TaskService {
 
   constructor(private http: HttpClient) {}
 
-  create(task: TaskInterface): Observable<TaskInterface> {
-    return this.http.post(`${environment.firebaseConfig.databaseURL}/tasks.json`, task)
-    .pipe(
-      map((response: FirebaseCreateResponse) => {
-        return {
-          ...task,
-          id: response.name,
-          date: new Date(task.date)
-        };
-      })
-    );
-  }
-
   getAll(): Observable<TaskInterface[]> {
     return this.http.get(`${environment.firebaseConfig.databaseURL}/tasks.json`)
       .pipe(
@@ -56,12 +43,25 @@ export class TaskService {
       );
   }
 
-  remove(id: string): Observable<void> {
-    return this.http.delete<void>(`${environment.firebaseConfig.databaseURL}/tasks/${id}.json`);
+  create(task: TaskInterface): Observable<TaskInterface> {
+    return this.http.post(`${environment.firebaseConfig.databaseURL}/tasks.json`, task)
+      .pipe(
+        map((response: FirebaseCreateResponse) => {
+          return {
+            ...task,
+            id: response.name,
+            date: new Date(task.date)
+          };
+        })
+      );
   }
 
   update(id: string, task: TaskInterface): Observable<TaskInterface> {
     return this.http.patch<TaskInterface>(`${environment.firebaseConfig.databaseURL}/tasks/${id}.json`, task);
+  }
+
+  delete(id: string): Observable<void> {
+    return this.http.delete<void>(`${environment.firebaseConfig.databaseURL}/tasks/${id}.json`);
   }
 
 }

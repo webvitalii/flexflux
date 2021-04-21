@@ -50,6 +50,7 @@ export class TaskEditComponent implements OnInit {
 
   submit(): any {
     const taskFormData = {
+      id: this.form.value.id,
       title: this.form.value.title,
       priority: this.form.value.priority
     };

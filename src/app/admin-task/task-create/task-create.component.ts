@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { DataService } from '@core/services/data.service';
 import { TaskInterface } from '@core/interfaces/task.interface';
@@ -14,14 +15,20 @@ import { TaskService } from '@core/services/task.service';
 })
 export class TaskCreateComponent implements OnInit {
   form: FormGroup;
+  priorityList = [
+    { value: 1, viewValue: 'Low' },
+    { value: 2, viewValue: 'Medium' },
+    { value: 3, viewValue: 'High' }
+  ];
 
-  constructor(private formBuilder: FormBuilder,
-              public dataService: DataService, public taskService: TaskService) { }
+  constructor(private router: Router,
+              public dataService: DataService,
+              public taskService: TaskService) { }
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group({
-      title: ['', [Validators.required]],
-      priority: ['', [Validators.required]]
+    this.form = new FormGroup({
+      title: new FormControl('', [Validators.required]),
+      priority: new FormControl('', [Validators.required])
     });
   }
 
@@ -30,15 +37,14 @@ export class TaskCreateComponent implements OnInit {
       return false;
     }
 
-    const post: TaskInterface = {
+    const task: TaskInterface = {
       title: this.form.value.title,
       priority: this.form.value.priority,
       date: new Date()
     };
 
-    this.taskService.create(post).subscribe(() => {
-      this.form.reset();
-      console.log('Task was created.');
+    this.taskService.create(task).subscribe((taskResponse) => {
+      this.router.navigate(['/admin-task', taskResponse.id, 'edit']);
     });
   }
 

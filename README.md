@@ -6,6 +6,14 @@ https://flexflux.firebaseapp.com/
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli)
 
+Todo:
+* list with table (sort, pager, filter)
+* delete
+* delete confirmation
+* notify wrap for snackBar
+* add week to the task item (create, edit)
+* add today day with list of tasks
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

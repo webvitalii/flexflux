@@ -16,11 +16,11 @@
 
     <div class="c-form__row">
       <mat-form-field [appearance]="dataService.controlAppearance" class="c-form__control">
-        <mat-label>Period</mat-label>
+        <mat-label>Priority</mat-label>
         <mat-select formControlName="priority">
           <mat-option></mat-option>
-          <mat-option *ngFor="let priorityItem of [].constructor(5); let i = index" [value]="i + 1">
-            {{ i + 1 }}
+          <mat-option *ngFor="let priorityItem of priorityList" [value]="priorityItem.value">
+            {{ priorityItem.viewValue }}
           </mat-option>
         </mat-select>
         <mat-error *ngIf="form.get('priority').hasError('required')">

@@ -60,8 +60,8 @@ export class TaskService {
     return this.http.delete<void>(`${environment.firebaseConfig.databaseURL}/tasks/${id}.json`);
   }
 
-  update(task: TaskInterface): Observable<TaskInterface> {
-    return this.http.patch<TaskInterface>(`${environment.firebaseConfig.databaseURL}/tasks/${task.id}.json`, task);
+  update(id: string, task: TaskInterface): Observable<TaskInterface> {
+    return this.http.patch<TaskInterface>(`${environment.firebaseConfig.databaseURL}/tasks/${id}.json`, task);
   }
 
 }

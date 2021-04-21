@@ -21,3 +21,61 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .c-form__control {
   width: 100%;
 }
+
+// ========== Utility classes ==========
+
+.u-w-20 {
+  width: 20%;
+}
+
+.u-w-25 {
+  width: 25%;
+}
+
+.u-w-50 {
+  width: 50%;
+}
+
+.u-w-100 {
+  width: 100%;
+}
+
+.u-m-1 {
+  margin: 4px;
+}
+
+.u-m-2 {
+  margin: 8px;
+}
+
+.u-m-3 {
+  margin: 16px;
+}
+
+.u-m-4 {
+  margin: 24px;
+}
+
+.u-m-5 {
+  margin: 32px;
+}
+
+.u-p-1 {
+  padding: 4px;
+}
+
+.u-p-2 {
+  padding: 8px;
+}
+
+.u-p-3 {
+  padding: 16px;
+}
+
+.u-p-4 {
+  padding: 24px;
+}
+
+.u-p-5 {
+  padding: 32px;
+}

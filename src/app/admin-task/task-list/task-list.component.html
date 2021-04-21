@@ -1,7 +1,9 @@
 <section>
   <app-page-title>Task list</app-page-title>
 
-  <a mat-raised-button color="primary" [routerLink]="['/admin-task', 'create']">New task</a>
+  <a mat-raised-button
+     color="primary"
+     [routerLink]="['/admin-task', 'create']">New task</a>
 
   <div *ngIf="tasks.length; else loading">
     <table class="table">
@@ -15,12 +17,12 @@
       </thead>
       <tbody>
       <tr *ngFor="let task of tasks; let idx = index">
-        <td>{{ idx + 1 }}</td>
+        <td>{{ task.id }}</td>
         <td>{{ task.title }}</td>
         <td>{{ task.date | date:'medium' }}</td>
         <td>
           <button mat-raised-button
-                  [routerLink]="['/admin-task', 'edit', task.id]">Edit</button>
+                  [routerLink]="['/admin-task', task.id, 'edit']">Edit</button>
           <button mat-raised-button
                   [color]="'warn'"
                   (click)="remove(task.id)">Delete</button>

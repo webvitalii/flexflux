@@ -16,7 +16,7 @@ import { DataService } from '@core/services/data.service';
   styleUrls: ['./task-list.component.scss']
 })
 export class TaskListComponent implements OnInit, AfterViewInit, OnDestroy {
-  displayedColumns: string[] = ['id', 'title', 'priority', 'actions'];
+  displayedColumns: string[] = ['title', 'priority', 'weekDays', 'actions'];
   dataSource: MatTableDataSource<TaskInterface>;
   taskList: TaskInterface[] = [];
   taskSub: Subscription;

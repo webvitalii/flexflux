@@ -7,7 +7,7 @@ import { switchMap } from 'rxjs/operators';
 import { DataService } from '@core/services/data.service';
 import { TaskInterface } from '@core/interfaces/task.interface';
 import { TaskService } from '@core/services/task.service';
-
+import { WEEK_DAY_LIST, PRIORITY_LIST } from '@core/constants/task.constant';
 
 
 @Component({
@@ -18,11 +18,8 @@ import { TaskService } from '@core/services/task.service';
 export class TaskEditComponent implements OnInit {
   form: FormGroup;
   taskData: TaskInterface;
-  priorityList = [
-    { value: 1, viewValue: 'Low' },
-    { value: 2, viewValue: 'Medium' },
-    { value: 3, viewValue: 'High' }
-  ];
+  priorityList = PRIORITY_LIST;
+  weekDayList = WEEK_DAY_LIST;
 
   constructor(private activatedRoute: ActivatedRoute,
               public taskService: TaskService,
@@ -31,7 +28,8 @@ export class TaskEditComponent implements OnInit {
   ngOnInit(): void {
     this.form = new FormGroup({
       title: new FormControl('', [Validators.required]),
-      priority: new FormControl('', [Validators.required])
+      priority: new FormControl('', [Validators.required]),
+      weekDays: new FormControl([])
     });
 
     this.activatedRoute.paramMap.pipe(
@@ -42,7 +40,8 @@ export class TaskEditComponent implements OnInit {
       this.taskData = taskResponse;
       const taskValues = {
         title: this.taskData?.title,
-        priority: this.taskData?.priority
+        priority: this.taskData?.priority,
+        weekDays: this.taskData?.weekDays
       };
       this.form.patchValue(taskValues);
     });
@@ -52,7 +51,8 @@ export class TaskEditComponent implements OnInit {
     const taskFormData = {
       id: this.form.value.id,
       title: this.form.value.title,
-      priority: this.form.value.priority
+      priority: this.form.value.priority,
+      weekDays: this.form.value.weekDays
     };
     this.taskService.update(this.taskData.id, taskFormData).subscribe(taskResponse => {
       this.snackBar.open(

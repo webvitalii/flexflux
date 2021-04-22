@@ -8,7 +8,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Todo:
 * delete confirmation
-* add week to the task item (create, edit)
 * add today day with list of tasks
 
 ## Development server

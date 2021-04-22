@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { DataService } from '@core/services/data.service';
 import { TaskInterface } from '@core/interfaces/task.interface';
 import { TaskService } from '@core/services/task.service';
-
+import { WEEK_DAY_LIST, PRIORITY_LIST } from '@core/constants/task.constant';
 
 
 @Component({
@@ -15,11 +15,8 @@ import { TaskService } from '@core/services/task.service';
 })
 export class TaskCreateComponent implements OnInit {
   form: FormGroup;
-  priorityList = [
-    { value: 1, viewValue: 'Low' },
-    { value: 2, viewValue: 'Medium' },
-    { value: 3, viewValue: 'High' }
-  ];
+  priorityList = PRIORITY_LIST;
+  weekDayList = WEEK_DAY_LIST;
 
   constructor(private router: Router,
               public dataService: DataService,
@@ -28,7 +25,8 @@ export class TaskCreateComponent implements OnInit {
   ngOnInit(): void {
     this.form = new FormGroup({
       title: new FormControl('', [Validators.required]),
-      priority: new FormControl('', [Validators.required])
+      priority: new FormControl('', [Validators.required]),
+      weekDays: new FormControl([])
     });
   }
 
@@ -40,6 +38,7 @@ export class TaskCreateComponent implements OnInit {
     const task: TaskInterface = {
       title: this.form.value.title,
       priority: this.form.value.priority,
+      weekDays: this.form.value.weekDays,
       date: new Date()
     };
 

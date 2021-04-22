@@ -30,6 +30,17 @@
     </div>
 
     <div class="c-form__row">
+      <mat-form-field [appearance]="dataService.controlAppearance" class="c-form__control">
+        <mat-label>Week Days</mat-label>
+        <mat-select formControlName="weekDays" multiple>
+          <mat-option *ngFor="let weekDayItem of weekDayList" [value]="weekDayItem.value">
+            {{ weekDayItem.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="c-form__row">
       <button mat-raised-button
               color="primary"
               [disabled]="form.invalid">

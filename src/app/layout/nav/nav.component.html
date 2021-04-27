@@ -1,6 +1,18 @@
-<mat-toolbar color="primary">
-  <button mat-button routerLink="/">FlexFlux</button>
-  <button mat-button routerLink="/account/login">Login</button>
-  <button mat-button routerLink="/account/logout">Logout</button>
-  <button mat-button routerLink="/admin-task">Admin Tasks</button>
+<mat-toolbar color="primary" class="c-nav">
+  <button mat-button
+          routerLink="/"
+          routerLinkActive="c-nav__item--active"
+          [routerLinkActiveOptions]="{exact: true}">FlexFlux</button>
+  <button mat-button
+          routerLink="/day/today"
+          routerLinkActive="c-nav__item--active">Today</button>
+  <button mat-button
+          routerLink="/account/login"
+          routerLinkActive="c-nav__item--active">Login</button>
+  <button mat-button
+          routerLink="/account/logout"
+          routerLinkActive="c-nav__item--active">Logout</button>
+  <button mat-button
+          routerLink="/admin-task"
+          routerLinkActive="c-nav__item--active">Admin Tasks</button>
 </mat-toolbar>

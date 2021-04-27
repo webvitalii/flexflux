@@ -1,0 +1,13 @@
+<section>
+
+  <app-page-title>Today</app-page-title>
+
+  <ol>
+    <li *ngFor="let taskItem of taskList">
+      {{ taskItem.title }} ( {{ taskItem.priority }} )
+    </li>
+  </ol>
+
+</section>
+
+

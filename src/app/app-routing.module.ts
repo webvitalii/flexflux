@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AccountModule } from '@app/account/account.module';
 import { AdminTaskModule } from '@app/admin-task/admin-task.module';
+import { DayModule } from '@app/day/day.module';
 
 
 const routes: Routes = [
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: 'admin-task',
     loadChildren: () => AdminTaskModule
+  },
+  {
+    path: 'day',
+    loadChildren: () => DayModule
   }
 ];
 

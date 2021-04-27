@@ -2,6 +2,6 @@ export interface TaskInterface {
   id?: string;
   title: string;
   priority: number;
-  weekDays: [];
+  weekDays: number[];
   date?: Date;
 }

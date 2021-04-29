@@ -3,11 +3,9 @@
   <app-page-title>Today</app-page-title>
 
   <ol>
-    <li *ngFor="let taskItem of taskList">
+    <li *ngFor="let taskItem of taskListToday">
       {{ taskItem.title }} ( {{ taskItem.priority }} )
     </li>
   </ol>
 
 </section>
-
-

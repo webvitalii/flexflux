@@ -5,12 +5,15 @@ import { RouterModule } from '@angular/router';
 
 import { MaterialModule } from './material.module';
 import { PageTitleComponent } from './page-title/page-title.component';
-
+import { OrderByPipe } from './pipes/order-by.pipe';
+import { ReversePipe } from './pipes/reverse.pipe';
 
 
 @NgModule({
   declarations: [
-    PageTitleComponent
+    PageTitleComponent,
+    OrderByPipe,
+    ReversePipe
   ],
   imports: [
     CommonModule,
@@ -24,7 +27,9 @@ import { PageTitleComponent } from './page-title/page-title.component';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    PageTitleComponent
+    PageTitleComponent,
+    OrderByPipe,
+    ReversePipe
   ]
 })
 export class SharedModule { }

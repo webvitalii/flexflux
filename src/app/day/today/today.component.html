@@ -3,7 +3,7 @@
   <app-page-title>Today</app-page-title>
 
   <ol>
-    <li *ngFor="let taskItem of taskListToday">
+    <li *ngFor="let taskItem of taskListToday | orderBy: 'priority' | reverse">
       {{ taskItem.title }} ( {{ taskItem.priority }} )
     </li>
   </ol>

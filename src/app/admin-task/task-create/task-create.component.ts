@@ -43,7 +43,12 @@ export class TaskCreateComponent implements OnInit {
     };
 
     this.taskService.create(task).subscribe((taskResponse) => {
-      this.router.navigate(['/admin-task', taskResponse.id, 'edit']);
+      const routerExtras = {
+        queryParams: {
+          action: 'create'
+        }
+      };
+      this.router.navigate(['/admin-task', taskResponse.id, 'edit'], routerExtras);
     });
   }
 

@@ -2,9 +2,9 @@ import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 
+import { NotificationUtil } from '@core/utils/notification.util';
 import { TaskService } from '@core/services/task.service';
 import { TaskInterface } from '@core/interfaces/task.interface';
 import { DataService } from '@core/services/data.service';
@@ -26,7 +26,7 @@ export class TaskListComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private taskService: TaskService,
-              private snackBar: MatSnackBar,
+              private notificationUtil: NotificationUtil,
               public dataService: DataService) {
   }
 
@@ -58,14 +58,7 @@ export class TaskListComponent implements OnInit, AfterViewInit, OnDestroy {
     this.deleteSub = this.taskService.delete(id).subscribe((taskResponse) => {
       this.taskList = this.taskList.filter(task => task.id !== id);
       this.dataSource.data = this.taskList;
-
-      this.snackBar.open(
-        'Deleted successfully',
-        'Close',
-        {
-          duration: 5000
-        }
-      );
+      this.notificationUtil.open('Deleted successfully');
     });
   }
 

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { switchMap } from 'rxjs/operators';
 
+import { NotificationUtil } from '@core/utils/notification.util';
 import { DataService } from '@core/services/data.service';
 import { TaskInterface } from '@core/interfaces/task.interface';
 import { TaskService } from '@core/services/task.service';
@@ -23,7 +23,12 @@ export class TaskEditComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               public taskService: TaskService,
-              public dataService: DataService, public snackBar: MatSnackBar) { }
+              public dataService: DataService,
+              private notificationUtil: NotificationUtil) {
+    if (this.activatedRoute.snapshot.queryParamMap.get('action') === 'create') {
+      this.notificationUtil.open('Created successfully');
+    }
+  }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -55,13 +60,7 @@ export class TaskEditComponent implements OnInit {
       weekDays: this.form.value.weekDays
     };
     this.taskService.update(this.taskData.id, taskFormData).subscribe(taskResponse => {
-      this.snackBar.open(
-        'Updated successfully',
-        'Close',
-        {
-          duration: 5000
-        }
-      );
+      this.notificationUtil.open('Updated successfully');
     });
   }
 
